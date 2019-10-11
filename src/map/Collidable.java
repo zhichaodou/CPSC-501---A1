@@ -31,18 +31,30 @@ public abstract class Collidable extends MapObject {
 		int collidableObjectTop = this.getYCoord();
 		int collidableObjectBottom = this.getYCoord() + this.getHeight();
 		
-	
-		if (((playerLeft >= collidableObjectLeft) && (playerLeft <= collidableObjectRight))
-				|| ((playerRight >= collidableObjectLeft) && (playerRight <= collidableObjectRight))) {
-			if (((playerTop >= collidableObjectTop) && (playerTop <= collidableObjectBottom))
-					|| ((playerBottom >= collidableObjectTop) && (playerBottom <= collidableObjectBottom))) {
+		if (this.checkLeftnRight(playerLeft, playerRight, collidableObjectLeft, collidableObjectRight) == true) {
+			if(this.checkTopnBottom(playerTop, playerBottom, collidableObjectTop, collidableObjectBottom)) {
 				collision = true;
 			}
 		}
 		return collision;
-		
-		
 	}
 	
+	public boolean checkLeftnRight(int playerLeft, int playerRight, int collidableObjectLeft, int collidableObjectRight) {
+		if (((playerLeft >= collidableObjectLeft) && (playerLeft <= collidableObjectRight)) 
+				|| ((playerRight >= collidableObjectLeft) && (playerRight <= collidableObjectRight))) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean checkTopnBottom(int playerTop, int playerBottom, int collidableObjectTop, int collidableObjectBottom) {
+		if (((playerTop >= collidableObjectTop) && (playerTop <= collidableObjectBottom))
+				|| ((playerBottom >= collidableObjectTop) && (playerBottom <= collidableObjectBottom))) {
+			return true;
+		}
+		
+		return false;
+	}
 	
 }
