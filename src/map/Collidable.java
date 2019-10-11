@@ -57,4 +57,10 @@ public abstract class Collidable extends MapObject {
 		return false;
 	}
 	
+	@Override
+	public void movement() {
+		setX((int)(getXCoord() - getScroll()));
+
+	}
+	
 }

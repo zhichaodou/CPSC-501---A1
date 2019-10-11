@@ -57,12 +57,7 @@ public class Coin extends Collidable {
 		}
 	}
 
-	
-	@Override
-	public void movement() {
-		setX((int)(getXCoord() - getScroll()));
 
-	}
 	
 	
 	/**

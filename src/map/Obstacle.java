@@ -54,11 +54,6 @@ public class Obstacle extends Collidable {
 		graphics.drawImage(image, getXCoord(), getYCoord(), getWidth(), getHeight(), null);
 	}
 
-	
-	@Override
-	public void movement() {
-		setX((int)(getXCoord() - getScroll()));
-	}
 
 	
 	@Override
