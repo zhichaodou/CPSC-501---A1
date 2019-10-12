@@ -13,26 +13,26 @@ import javax.imageio.ImageIO;
 
 
 public class CreditState implements GameState {
-	private Manager Manager;
-	private BufferedImage cbGround, ZachBlach;
-	private String TeamMembers[];
-	private String Titles[];
-	private String Sources[];
-	private Font TFont;
-	private Font TiFont;
-	private Color Col = Color.decode("#3A8EF2");
+	private Manager manager;
+	private BufferedImage cbGround, zachBlach;
+	private String teamMembers[];
+	private String titles[];
+	private String sources[];
+	private Font textFont;
+	private Font titlesFont;
+	private Color colorSet = Color.decode("#3A8EF2");
 	
 	public CreditState(Manager manager){
-		this.Manager = manager;
-		TeamMembers = new String[] { "Dou, Zhi Chao", "Flanagan, Emily", "Khelif, Haithem","Schijins, Josh","Tieu, Katie"};
-		Titles = new String[] {"Credits","Team Members","Art / Sounds"};
-		Sources = new String[] {"freesound.org","opengameart.org","DJ Zach Blach"};
-		TFont = new Font ("Courier New", 1, 20);
-		TiFont = new Font ("SansSerif.bold", 1, 50);
+		this.manager = manager;
+		teamMembers = new String[] { "Dou, Zhi Chao", "Flanagan, Emily", "Khelif, Haithem","Schijins, Josh","Tieu, Katie"};
+		titles = new String[] {"Credits","Team Members","Art / Sounds"};
+		sources = new String[] {"freesound.org","opengameart.org","DJ Zach Blach"};
+		textFont = new Font ("Courier New", 1, 20);
+		titlesFont = new Font ("SansSerif.bold", 1, 50);
 		
 		try {
 			cbGround = ImageIO.read(new File("src/images/background.png"));
-			ZachBlach = ImageIO.read(new File("src/images/DjZachBlach.png"));
+			zachBlach = ImageIO.read(new File("src/images/DjZachBlach.png"));
 		} catch(IllegalArgumentException iae) {
 			ErrorMessage.addError("Image is null in Credits");
 		} catch (IOException ioe) {
@@ -48,30 +48,30 @@ public class CreditState implements GameState {
 	@Override
 	public void draw(Graphics2D graphics) {
 		graphics.drawImage(cbGround, 0,0,1650, 550, null);
-		graphics.drawImage(ZachBlach, 1000, 200, 500,375,null);
-		graphics.setColor(Col);
-		graphics.setFont(TFont);
-		graphics.drawString(Titles[0],700, 50);
-		graphics.drawString(Titles[1],630, 140);
-		graphics.setFont (TFont);
+		graphics.drawImage(zachBlach, 1000, 200, 500,375,null);
+		graphics.setColor(colorSet);
+		graphics.setFont(textFont);
+		graphics.drawString(titles[0],700, 50);
+		graphics.drawString(titles[1],630, 140);
+		graphics.setFont (textFont);
 		for (int i=0; i < 5; i++) {
 			graphics.setColor(Color.BLACK);
-			graphics.drawString(TeamMembers[i],720, 190+ i*25);
+			graphics.drawString(teamMembers[i],720, 190+ i*25);
 			}
-		graphics.setColor(Col);
-		graphics.setFont(TiFont);
-		graphics.drawString(Titles[2],650, 350);
-		graphics.setFont(TiFont);
+		graphics.setColor(colorSet);
+		graphics.setFont(titlesFont);
+		graphics.drawString(titles[2],650, 350);
+		graphics.setFont(titlesFont);
 		for (int i=0; i <= 2; i++) {
 			graphics.setColor(Color.BLACK);
-			graphics.drawString(Sources[i],700, 400+ i*25);
+			graphics.drawString(sources[i],700, 400+ i*25);
 			}
 	}
 
 	@Override
 	public void keyPressed(int key) {
 		if(key == KeyEvent.VK_R){
-			Manager.setState(Manager.getState("MENU"));
+			manager.setState(manager.getState("MENU"));
 		}
 
 	}
