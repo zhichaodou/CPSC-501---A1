@@ -50,44 +50,17 @@ public class MenuState implements GameState {
 	
 	public void keyPressed(int key){
 		
-		int button = 0;
-		
 		if(key == KeyEvent.VK_P){
-			//music.stop();
-			//manager.setState(manager.getState("PLAY"));
-			button = 1;
-		}else if(key == KeyEvent.VK_C){
-			//manager.setState(manager.getState("CREDIT"));
-			button = 2;
-		}else if(key == KeyEvent.VK_E){
-			//manager.setState(manager.getState("EXIT"));
-			button = 3;
-		}else if(key == KeyEvent.VK_S){
-			//manager.setState(manager.getState("SCORES"));
-			button = 4;
-		}
-		
-		switch(button) {
-		
-		case 1:
 			music.stop();
 			manager.setState(manager.getState("PLAY"));
-			break;
-			
-		case 2:		
+		}else if(key == KeyEvent.VK_C){
 			manager.setState(manager.getState("CREDIT"));
-			break;
-			
-		case 3:	
+		}else if(key == KeyEvent.VK_E){
 			manager.setState(manager.getState("EXIT"));
-			break;
-			
-		case 4:	
+		}else if(key == KeyEvent.VK_S){
 			manager.setState(manager.getState("SCORES"));
-			break;
 		}
-		
-		
+			
 	}
 	
 }
