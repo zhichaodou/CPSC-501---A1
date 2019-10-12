@@ -14,6 +14,7 @@ public class HighScore {
 	private String userName = "John";
 	private Coin coin = new Coin();
 	private boolean gameInProgress = true;
+	private HighScoreData hsData = new HighScoreData();
 	
 	/**
 	 * Defines the event for the Timer to preform every time it goes off
@@ -59,10 +60,12 @@ public class HighScore {
 		if (gameInProgress) {
 			score.cancel();
 			userScore = userScore + coin.getCollectedcoins();
-			currentHighScore = this.previousHighScore();
-			boolean isHigher = this.compareScores();
+			//currentHighScore = this.previousHighScore();
+			currentHighScore = hsData.getPreviousHighScore(currentHighScore);
+			//boolean isHigher = this.compareScores();
+			boolean isHigher = hsData.compareScores(userScore, currentHighScore);
 			if (isHigher) {
-				this.writeInNewScore();
+				hsData.writeInNewScore(userScore);
 			}
 			this.updateHighScoreBoard(this.userName, this.userScore);
 			gameInProgress = false;
